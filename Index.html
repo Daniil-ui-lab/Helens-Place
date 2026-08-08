@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helen's Place | Home-Cooked Style Food</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D35400; /* Pumpkin orange */
+            --secondary-color: #8B4513; /* Saddle brown */
+            --bg-color: #FFF8F0; /* Very light orange/cream */
+            --text-color: #333333;
+            --light-text: #666666;
+            --white: #FFFFFF;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://z-cdn-media.chatglm.cn/files/72d1af21-cce7-46b2-806e-051091922ce8.jpg?auth_key=1886155452-3bdd0045165e49d0aef0bc9093d34798-0-b55d5749add79a528755cffd3dfce7cb') center/cover no-repeat;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 0.2rem;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.8rem auto 0;
+        }
+
+        /* Popular Dishes Grid */
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Menu Highlights */
+        .menu-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .review-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .review-time {
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">Helen's Place</a>
+            <ul class="nav-links">
+                <li><a href="#popular">Popular</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Helen's Place</h1>
+            <p>Quality, home-cooked style food and friendly staff.</p>
+            <div>
+                <span class="badge rating-stars">★ 4.9 (650 reviews)</span>
+                <span class="badge">$10–20 per person</span>
+                <span class="badge">🏳️‍🌈 LGBTQ+ Friendly</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="popular">
+        <h2 class="section-title">Popular Dishes</h2>
+        <div class="popular-grid">
+            <div class="card">
+                <img src="https://z-cdn-media.chatglm.cn/files/5f0f5af7-ebc3-440c-8f2c-4736c26210e5.jpg?auth_key=1886155452-a45906cb2087410f9ff08d61a4b4467a-0-2b8f77d25571f72814bf1b3ffc74a0b4" alt="Grilled Dumplings">
+                <div class="card-content">
+                    <h3>Grilled Dumplings (12pc)</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://z-cdn-media.chatglm.cn/files/72d1af21-cce7-46b2-806e-051091922ce8.jpg?auth_key=1886155452-3bdd0045165e49d0aef0bc9093d34798-0-b55d5749add79a528755cffd3dfce7cb" alt="French Toast">
+                <div class="card-content">
+                    <h3>French Toast</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://z-cdn-media.chatglm.cn/files/6a0ea586-00ba-47ee-8866-1af240d50b5f.jpg?auth_key=1886155452-1d4043546439419b8aa2a92bc7200654-0-108a6f388eb9bc40a16d678fa868a7fd" alt="Wor Wonton Soup">
+                <div class="card-content">
+                    <h3>Wor Wonton Soup</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://z-cdn-media.chatglm.cn/files/3752b655-1158-4ce4-8d30-06827e402a7b.jpg?auth_key=1886155452-76c950d23e4c469e8a0a444afcefc402-0-8ceea75f94cd5d0adc5493198fc12cf1" alt="Hawaiian Loco Moco">
+                <div class="card-content">
+                    <h3>Hawaiian Loco Moco</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" style="background-color: #fff;">
+        <h2 class="section-title">Menu Highlights</h2>
+        <div class="menu-highlights">
+            <div class="menu-item">Coffee</div>
+            <div class="menu-item">Scrambled Egg with Bacon & Sausage</div>
+            <div class="menu-item">Traditional Eggs Benedict</div>
+            <div class="menu-item">Chorizo Hash</div>
+            <div class="menu-item">Mexican Omelet</div>
+            <div class="menu-item">Poutine</div>
+            <div class="menu-item">Club Sandwich</div>
+            <div class="menu-item">Home Fries</div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h2 class="section-title">What Our Guests Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-head">
+                    <span class="rating-stars">★★★★★</span>
+                    <span class="review-time">A month ago</span>
+                </div>
+                <p class="review-text">"I went to Helen’s Place for breakfast today, and this was our second visit. We had the same wonderful experience as before! The wonton soup was absolutely delicious, and the Traditional Eggs Benedict was exceptional. Everything was fresh…"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-head">
+                    <span class="rating-stars">★★★★★</span>
+                    <span class="review-time">4 months ago</span>
+                </div>
+                <p class="review-text">"Mexican omelet was worth eating. Helen made fresh coffee. Rye bread was also fresh and toasted with butter. Hash browns were little burnt but the spice/masala on them, made them delicious. Helen provided an exceptional service but the smile…"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-head">
+                    <span class="rating-stars">★★★★★</span>
+                    <span class="review-time">2 months ago</span>
+                </div>
+                <p class="review-text">"I was working in the area and was starving for some good breakfast and I'm glad I stumbled upon this Helen's Place! I usually order eggs benedict but I ended up ordering the Chorizo Hash and it was incredible! It had a really nice mix of…"</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-bar">
+        <h3>Visit Us!</h3>
+        <p>Open Daily at 9:00 a.m.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Prices can't be beat · Reported by 343 people</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Helen's Place. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem;">Find us on <a href="https://www.facebook.com/helensplaceyyc/" target="_blank">Facebook</a></p>
+    </footer>
+
+</body>
+</html>
